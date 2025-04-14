@@ -1,0 +1,3 @@
+module gat(input a, output b);
+  b= ~a;
+endmodule
