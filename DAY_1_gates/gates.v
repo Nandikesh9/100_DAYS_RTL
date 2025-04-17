@@ -23,14 +23,14 @@ module gates(
     output and_out, or_out, not_out, nand_out, nor_out, xor_out, xnor_out
     );
 	 /*
-		 assign and_out = a[0] & b[0];
-		 assign or_out = a[1] | b[1];
-		 assign not_out = ~a[2];
-		 assign nand_out = ~(a[3] & b[3]);
-		 assign nor_out = ~(a[4] | b[4]);
-		 assign xor_out = (~a[5] & b[5]) | (a[5] & ~b[5]);
-		 assign xnor_out = (~a[6] & ~b[6]) | (a[6] & b[6]); */
-		 
+		 assign and_out = a[0] & b[0]; 	//			|
+		 assign or_out = a[1] | b[1];	//			|
+		 assign not_out = ~a[2];	//			|
+		 assign nand_out = ~(a[3] & b[3]);//			|-----> Data Flow model
+		 assign nor_out = ~(a[4] | b[4]);//			|
+		 assign xor_out = (~a[5] & b[5]) | (a[5] & ~b[5]);//	|
+		 assign xnor_out = (~a[6] & ~b[6]) | (a[6] & b[6]); //	|
+		 */
 		 and g0 (and_out,a[0],b[0]);
 		 or g1 (or_out,a[1],b[1]);
 		 not g2 (not_out,a[2]);
