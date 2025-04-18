@@ -25,4 +25,7 @@ module ha(
 	xor g1(s,a,b);
 	and g2(c,a,b);
 
+	//s= a ^ b; // data_flow
+	//c= a & b; //
+
 endmodule
