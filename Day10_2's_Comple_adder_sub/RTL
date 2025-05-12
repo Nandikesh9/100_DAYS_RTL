@@ -1,0 +1,29 @@
+module CAS(
+    input [3:0] a,b,
+    input ctrl,
+    output [3:0] s,
+    output Cout
+    );
+	 wire[3:0] w;
+	 wire [3:1] c;
+	 
+	 xor g1(w[0],ctrl,b[0]);
+	 xor g2(w[1],ctrl,b[1]);
+	 xor g3(w[2],ctrl,b[2]);
+	 xor g4(w[3],ctrl,b[3]);
+	 
+	 full_adder g5(.s(s[0]), .cout(c[1]), .a(a[0]), .b(w[0]), .cin(ctrl));
+	 full_adder g6(.s(s[1]), .cout(c[2]), .a(a[1]), .b(w[1]), .cin(c[1]));
+	 full_adder g7(.s(s[2]), .cout(c[3]), .a(a[2]), .b(w[2]), .cin(c[2]));
+	 full_adder g8(.s(s[3]), .cout(Cout), .a(a[3]), .b(w[3]), .cin(c[3]));
+
+endmodule
+
+module full_adder(
+    input a,b,cin,
+    output s,cout
+    );
+	assign s = a^b^cin;
+	assign cout = a&b | b&cin | cin&a ;
+
+endmodule
