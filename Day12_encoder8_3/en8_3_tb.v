@@ -26,7 +26,6 @@ module en8_3_tb;
 
 	// Inputs
 	reg [7:0] i;
-	reg enb;
 
 	// Outputs
 	wire [2:0] y;
@@ -36,17 +35,14 @@ module en8_3_tb;
 	en8_3 uut (
 		.i(i), 
 		.y(y), 
-		.enb(enb)
 	);
 
 	initial begin
 		// Initialize Inputs
 		i = 0;
-		enb = 0;
 	end
 	
 	initial begin
-		enb=1;
 		i=8'b0000_0001;
 		#5;
 		i=8'b0000_0010;
@@ -64,7 +60,7 @@ module en8_3_tb;
 		i=8'b1000_0000;
 		#5;
 		
-		enb=0;
+		/*enb=0;
 		i=8'b0000_0001;
 		#5;
 		i=8'b0000_0010;
@@ -80,11 +76,11 @@ module en8_3_tb;
 		i=8'b0100_0000;
 		#5;
 		i=8'b1000_0000;
-		#5;
+		#5;*/
 	end    
 	
 	initial 
-		$monitor("i=%b, enb=%b, | output y=%b", i,enb,y);
+		$monitor("i=%b, | output y=%b", i,y);
 		
 	initial 
 		#75 $finish;
