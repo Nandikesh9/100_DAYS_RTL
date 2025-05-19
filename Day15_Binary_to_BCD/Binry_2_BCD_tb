@@ -1,0 +1,66 @@
+`timescale 1ns / 1ps
+
+////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer:
+//
+// Create Date:   18:08:30 05/19/2025
+// Design Name:   BCD
+// Module Name:   F:/Xilinix_lab/Practise/RTL_100/Binary_2_BCD/BCD_tb.v
+// Project Name:  Binary_2_BCD
+// Target Device:  
+// Tool versions:  
+// Description: 
+//
+// Verilog Test Fixture created by ISE for module: BCD
+//
+// Dependencies:
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+////////////////////////////////////////////////////////////////////////////////
+
+module BCD_tb;
+
+	// Inputs
+	reg [7:0] Bin;
+
+	// Outputs
+	wire [3:0] huns;
+	wire [3:0] tens;
+	wire [3:0] ones;
+
+	// Instantiate the Unit Under Test (UUT)
+	BCD uut (
+		.Bin(Bin), 
+		.huns(huns), 
+		.tens(tens), 
+		.ones(ones)
+	);
+
+	initial begin
+		// Initialize Inputs
+		Bin = 0;
+	end
+	
+	initial begin
+		Bin = 8'b1100_1000;
+		#10;
+		Bin = 8'b0100_0000;
+		#10;
+		Bin = 8'b1111_0000;
+		#10;
+		Bin = 8'b0000_1111;
+		#10;
+	end
+	
+	initial 
+		$monitor("Bin=%b, | output huns=%d, tens=%d, ones=%d", Bin, huns, tens, ones);
+		
+	initial 
+		#40 $finish;
+      
+endmodule
+
