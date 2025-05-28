@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 module mux2_1(
         input [1:0]i,
-        input sel,
+        input reg sel,
         output reg y);
 
         always@(*) begin
